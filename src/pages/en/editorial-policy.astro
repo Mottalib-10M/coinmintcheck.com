@@ -1,0 +1,26 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { AUTHOR_NAME, CONTACT_EMAIL, LAST_UPDATED, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+---
+<PageLayout title={`Editorial policy of ${SITE_NAMES[lang]}: sources and corrections`} description="Which Mint tables and official pages US Coin Values relies on, how mintages and metal values are checked, which sources it refuses and how a mistake is corrected and dated." lang={lang} noindex={true} breadcrumbs={[{ label: 'Editorial policy' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Editorial and corrections policy</h1>
+    <p>People use these pages to decide whether a coin deserves a closer look or a trip to an expert. A wrong mintage or a wrong silver content can make them sell a scarce coin for its metal or spend money grading a common one, so every figure points back to the publication it was read in.</p>
+    <h2>Who is responsible</h2><p>{AUTHOR_NAME}, reachable at <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</p>
+    <h2>What we read</h2>
+    <ul>
+      <li>the Bureau of the Mint’s 1981 book of coins manufactured from 1793 to 1980, and the Mint’s annual reports;</li>
+      <li>usmint.gov: coin specifications, mint marks, history of circulating coins, penny FAQs, press releases and production reports, including archived copies where the Mint has removed a page;</li>
+      <li>the United States Code and the Code of Federal Regulations on govinfo.gov;</li>
+      <li>the World Bank’s monthly commodity prices and a live silver and copper price service.</li>
+    </ul>
+    <h2>Sources we refuse</h2><p>Dealers, auction houses, price guides, forums and grading services never supply a figure here. A fact we cannot find in an official publication is not presented as a fact; where official sources are silent, the page says so. No collector price is published, because none can be sourced freely.</p>
+    <h2>Review cycle</h2><p>The metal prices are re-read every month by a scheduled script and live in the browser. Specifications and dates are re-read against the Mint’s pages when a change is announced, such as a new design or the end of a coin.</p>
+    <h2>Corrections</h2>
+    <ol><li>We open the source again.</li><li>We correct the data file and add an automated test for the case.</li><li>The site rebuilds and every page shows the new date.</li></ol>
+    <h2>Independence</h2><p>No mint, dealer or grading service pays for or reviews what is published here, and the site carries no affiliate link. See also the <a href={route('method', lang)}>method page</a>. Version of <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'en-US')}</time>.</p>
+  </div>
+</PageLayout>

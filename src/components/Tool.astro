@@ -1,0 +1,35 @@
+---
+/**
+ * Renders one tool with its page defaults: `coin` (props: denom, year, mint), `melt` (props: type, qty),
+ * `quiz` (grading quiz) or `mini:<spec>` from `lib/mini-specs.ts`.
+ */
+import CoinCheck from './calc/CoinCheck';
+import MeltCalc from './calc/MeltCalc';
+import GradingQuiz from './calc/GradingQuiz';
+import MiniSim from './calc/MiniSim';
+import { route, hasRoute, type Locale } from '../i18n/routes';
+import { getSpec } from '../lib/mini-specs';
+import { SERIES } from '../lib/engine/coins';
+import type { ToolDef } from '../lib/guide-types';
+interface Props { tool: ToolDef; lang?: Locale; primary?: boolean; idPrefix?: string; seedKey?: string }
+const { tool, lang = 'en', primary = false, idPrefix } = Astro.props;
+const props = (tool.props ?? {}) as Record<string, any>;
+const kind = tool.kind;
+const mini = kind.startsWith('mini:') ? kind.slice(5) : null;
+const spec = mini ? getSpec(mini) : null;
+const href = spec?.ctaPage && hasRoute(spec.ctaPage, lang) ? route(spec.ctaPage, lang) : undefined;
+const numDefaults: Record<string, number> = {};
+for (const [k, v] of Object.entries(props)) if (typeof v === 'number') numDefaults[k] = v;
+/** Series → page that covers it (links in the checker's result). */
+const SERIES_PAGE: Record<string, string> = {
+  'wheat-cent': 'wheat-penny-value', 'memorial-cent': 'lincoln-penny-value', 'shield-cent': 'lincoln-penny-value', 'bicentennial-cent': 'lincoln-penny-value',
+  'buffalo-nickel': 'buffalo-nickel-value', 'jefferson-nickel': 'jefferson-nickel-value', 'mercury-dime': 'mercury-dime-value', 'roosevelt-dime': 'roosevelt-dime-value',
+  'state-quarter': 'state-quarters-value', 'washington-quarter': 'silver-quarter-value', 'walking-half': 'walking-liberty-half-dollar-value', 'franklin-half': 'walking-liberty-half-dollar-value',
+  'kennedy-half': 'kennedy-half-dollar-value', 'morgan-dollar': 'morgan-silver-dollar-value', 'peace-dollar': 'peace-dollar-value', 'golden-dollar': 'sacagawea-dollar-value',
+};
+const links = Object.fromEntries(SERIES.filter((s) => SERIES_PAGE[s.id] && hasRoute(SERIES_PAGE[s.id], lang)).map((s) => [s.id, route(SERIES_PAGE[s.id], lang)]));
+---
+{kind === 'coin' && <CoinCheck client:load idPrefix={idPrefix ?? (primary ? 'cc' : 'cc2')} denom={props.denom ?? 'quarter'} year={props.year ?? 1964} mint={props.mint ?? 'D'} links={links} primary={primary} />}
+{kind === 'melt' && <MeltCalc client:load idPrefix={idPrefix ?? (primary ? 'mc' : 'mc2')} type={props.type ?? 'silverQuarter'} qty={props.qty ?? 10} primary={primary} />}
+{kind === 'quiz' && <GradingQuiz client:load idPrefix={idPrefix ?? (primary ? 'gq' : 'gq2')} primary={primary} />}
+{mini && <MiniSim client:load kind={mini} href={href} defaults={numDefaults} primary={primary} idPrefix={idPrefix ?? (primary ? 'p' : 'm')} />}

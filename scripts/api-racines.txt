@@ -1,0 +1,2 @@
+# Prix en direct appelés par le navigateur et au build (scripts/fetch-spot.mjs) : gold-api.com, argent XAG et cuivre HG
+https://api.gold-api.com/

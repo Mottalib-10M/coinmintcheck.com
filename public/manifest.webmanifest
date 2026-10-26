@@ -1,0 +1,21 @@
+{
+ "name": "US Coin Values",
+ "short_name": "US Coin Values",
+ "description": "What is your US coin worth? Year and mint mark give the official mintage, the metal inside and its melt value at today's price, with the penny end and error coins explained.",
+ "start_url": "/en/",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#0A3161",
+ "icons": [
+  {
+   "src": "/icon-192.png",
+   "sizes": "192x192",
+   "type": "image/png"
+  },
+  {
+   "src": "/icon-512.png",
+   "sizes": "512x512",
+   "type": "image/png"
+  }
+ ]
+}

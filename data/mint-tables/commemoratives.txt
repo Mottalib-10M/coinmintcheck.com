@@ -1,0 +1,142 @@
+# Table LIII, Annual commemorative coinage, Domestic and Foreign Coins Manufactured by Mints of the United States
+# 1793-1980 (Bureau of the Mint, 1981), pages 85 to 89. Silver coins only (gold issues left out).
+# "Produced" column; footnote 1 of the table: excludes coins reserved for assay purposes.
+# year;mint;denom;produced;name
+1892;P;half;950000;Columbian Exposition
+1893;P;half;4050000;Columbian Exposition
+1893;P;quarter;40000;Columbian Exposition
+1900;P;dollar;50000;Lafayette
+1915;S;half;60000;Panama-Pacific International Exposition
+1918;P;half;100000;Illinois Centennial
+1920;P;half;50000;Maine Centennial
+1920;P;half;200000;Landing of the Pilgrims
+1921;P;half;100000;Landing of the Pilgrims
+1921;P;half;50000;Missouri Centennial
+1921;P;half;70000;Alabama Centennial
+1922;P;half;100000;Grant Memorial
+1923;S;half;274000;Monroe Doctrine Centennial
+1924;P;half;142000;Huguenot-Walloon Tercentenary
+1925;P;half;2314000;Stone Mountain Memorial
+1925;P;half;162000;Battle Lexington-Concord
+1925;S;half;150000;California Diamond Jubilee
+1925;S;half;50000;Fort Vancouver
+1926;P;half;1000000;Signing of Declaration of Independence, Sesquicentennial
+1926;P;half;48000;Oregon Trail
+1926;S;half;100000;Oregon Trail
+1927;P;half;40000;Battle of Bennington
+1928;P;half;50000;Oregon Trail
+1928;P;half;10000;Hawaiian Discovery
+1933;D;half;5250;Oregon Trail
+1934;D;half;7000;Oregon Trail
+1934;P;half;205000;Texas Centennial
+1934;P;half;10000;Daniel Boone Bicentennial
+1934;P;half;25000;Maryland Tercentennial
+1935;P;half;13000;Arkansas Centennial
+1935;S;half;5500;Arkansas Centennial
+1935;D;half;5500;Arkansas Centennial
+1935;P;half;20000;Daniel Boone Bicentennial
+1935;S;half;7000;Daniel Boone Bicentennial
+1935;D;half;7000;Daniel Boone Bicentennial
+1935;P;half;25000;Connecticut Tercentennial
+1935;P;half;10000;City of Hudson, N.Y.
+1935;P;half;10000;Old Spanish Trail
+1935;P;half;10000;Texas Centennial
+1935;S;half;10000;Texas Centennial
+1935;D;half;10000;Texas Centennial
+1935;S;half;250000;California-Pacific Exposition, San Diego
+1936;P;half;25000;Albany, N.Y., 250th anniversary
+1936;P;half;10000;Arkansas Centennial
+1936;S;half;10000;Arkansas Centennial
+1936;D;half;10000;Arkansas Centennial
+1936;S;half;100000;San Francisco-Oakland Bay Bridge
+1936;P;half;25000;Bridgeport, Conn., Centennial
+1936;D;half;180000;California-Pacific Exposition, San Diego
+1936;P;half;5000;Cincinnati Music Center
+1936;S;half;5000;Cincinnati Music Center
+1936;D;half;5000;Cincinnati Music Center
+1936;P;half;25000;Great Lakes Exposition, Cleveland, Centennial
+1936;P;half;9000;Columbia, S.C., Sesquicentennial
+1936;S;half;8000;Columbia, S.C., Sesquicentennial
+1936;D;half;8000;Columbia, S.C., Sesquicentennial
+1936;P;half;12000;Daniel Boone Bicentennial
+1936;S;half;5000;Daniel Boone Bicentennial
+1936;D;half;5000;Daniel Boone Bicentennial
+1936;P;half;25000;Elgin, Ill., Centennial
+1936;P;half;100000;Long Island Tercentennial
+1936;P;half;20000;Lynchburg, Va., Sesquicentennial
+1936;P;half;10000;Oregon Trail
+1936;S;half;5000;Oregon Trail
+1936;P;half;20000;Providence, R.I., Tercentennial
+1936;S;half;15000;Providence, R.I., Tercentennial
+1936;D;half;15000;Providence, R.I., Tercentennial
+1936;P;half;10000;Texas Centennial
+1936;S;half;10000;Texas Centennial
+1936;D;half;10000;Texas Centennial
+1936;P;half;25000;Wisconsin Centennial
+1936;P;half;25000;York County, Maine, Tercentennial
+1937;P;half;50000;Battle of Antietam, 75th anniversary
+1937;P;half;10500;Arkansas Centennial
+1937;S;half;5500;Arkansas Centennial
+1937;D;half;5500;Arkansas Centennial
+1937;P;half;25000;Great Lakes Exposition, Cleveland, Centennial
+1937;P;half;15000;Daniel Boone Bicentennial
+1937;S;half;5000;Daniel Boone Bicentennial
+1937;D;half;7500;Daniel Boone Bicentennial
+1937;P;half;50000;Battle of Gettysburg, 75th anniversary
+1937;P;half;25000;New Rochelle, N.Y., 250th anniversary
+1937;P;half;25000;Norfolk, Va., Tercentennial of land grant and bicentennial of City
+1937;D;half;12000;Oregon Trail
+1937;P;half;50000;Roanoke Island, N.C., 350th anniversary
+1937;P;half;25000;Swedes' Landing in Delaware, Tercentennial
+1937;S;half;8000;Texas Centennial
+1937;P;half;8000;Texas Centennial
+1937;D;half;8000;Texas Centennial
+1938;P;half;6000;Arkansas Centennial
+1938;S;half;6000;Arkansas Centennial
+1938;D;half;6000;Arkansas Centennial
+1938;P;half;5000;Daniel Boone Bicentennial
+1938;S;half;5000;Daniel Boone Bicentennial
+1938;D;half;5000;Daniel Boone Bicentennial
+1938;P;half;6000;Oregon Trail
+1938;S;half;6000;Oregon Trail
+1938;D;half;6000;Oregon Trail
+1938;P;half;5000;Texas Centennial
+1938;S;half;5000;Texas Centennial
+1938;D;half;5000;Texas Centennial
+1939;P;half;2100;Arkansas Centennial
+1939;S;half;2100;Arkansas Centennial
+1939;D;half;2100;Arkansas Centennial
+1939;P;half;3000;Oregon Trail
+1939;S;half;3000;Oregon Trail
+1939;D;half;3000;Oregon Trail
+1946;P;half;100000;Iowa Centennial
+1946;P;half;1000000;Booker T. Washington
+1946;S;half;500000;Booker T. Washington
+1946;D;half;200000;Booker T. Washington
+1947;P;half;100000;Booker T. Washington
+1947;S;half;100000;Booker T. Washington
+1947;D;half;100000;Booker T. Washington
+1948;P;half;20000;Booker T. Washington
+1948;S;half;20000;Booker T. Washington
+1948;D;half;20000;Booker T. Washington
+1949;P;half;12000;Booker T. Washington
+1949;S;half;12000;Booker T. Washington
+1949;D;half;12000;Booker T. Washington
+1950;P;half;12000;Booker T. Washington
+1950;S;half;512000;Booker T. Washington
+1950;D;half;12000;Booker T. Washington
+1951;P;half;510000;Booker T. Washington
+1951;S;half;12000;Booker T. Washington
+1951;D;half;12000;Booker T. Washington
+1951;P;half;110000;Booker T. Washington-George Washington Carver
+1951;S;half;10000;Booker T. Washington-George Washington Carver
+1951;D;half;10000;Booker T. Washington-George Washington Carver
+1952;P;half;2006000;Booker T. Washington-George Washington Carver
+1952;S;half;8000;Booker T. Washington-George Washington Carver
+1952;D;half;8000;Booker T. Washington-George Washington Carver
+1953;P;half;8000;Booker T. Washington-George Washington Carver
+1953;S;half;108000;Booker T. Washington-George Washington Carver
+1953;D;half;8000;Booker T. Washington-George Washington Carver
+1954;P;half;12000;Booker T. Washington-George Washington Carver
+1954;S;half;122000;Booker T. Washington-George Washington Carver
+1954;D;half;12000;Booker T. Washington-George Washington Carver

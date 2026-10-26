@@ -1,0 +1,11 @@
+---
+/** Attributions required by the licences (RECETTE §12.1, audit données-droits du 2026-10-24).
+ * Shown at the foot of every page, embeds included. */
+interface Props { class?: string }
+const { class: cls = 'text-xs text-navy-500' } = Astro.props;
+const CCBY = 'https://creativecommons.org/licenses/by/4.0/';
+---
+<p class={cls} data-licence-notice>
+  Monthly nickel, zinc, copper and silver prices: World Bank, Commodity Price Data (The Pink Sheet), licensed under <a class="underline" href={CCBY} target="_blank" rel="noopener">CC BY 4.0</a>; calculations by Radif Partners. Live silver and copper prices: gold-api.com.
+  Mintages and specifications: US Mint and Bureau of the Mint publications (US government works), some read through archived copies on the Internet Archive. Explanations and tools written by Radif Partners.
+</p>

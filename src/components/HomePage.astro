@@ -1,0 +1,108 @@
+---
+/**
+ * Home (pillar page). The coin checker first, then what decides a coin's value, the melt value
+ * calculator, silver years, mintages, the end of the penny and grading, each with its tool, then every
+ * page of the site. Every figure is read from params-2026.json and mintages.json through the helpers.
+ */
+import PageLayout from '../layouts/PageLayout.astro';
+import Tool from './Tool.astro';
+import Clamp from './Clamp.astro';
+import Sources from './Sources.astro';
+import { route } from '../i18n/routes';
+import { PAGES } from '../lib/guides';
+import { GROUPS_ORDER, groupLabel } from '../i18n/nav';
+import { helpers } from '../lib/helpers';
+import { LAST_UPDATED, AUTHOR_NAME } from '../data/site-config';
+import { displayDate } from '../lib/format';
+import { faqSchema, webApplicationSchema, websiteSchema, organizationSchema } from '../lib/seo';
+const lang = 'en';
+const h = helpers(lang, true);
+const cards = (g: (typeof GROUPS_ORDER)[number]) => PAGES.filter((p) => p.group === g).map((p) => ({ href: route(p.id, lang), name: p.en.nav, text: p.en.card }));
+const link = (id: string, text: string) => h.a(id, text);
+
+const title = 'Coin Value Checker: Mintage and Melt Value of Any Coin';
+const description = 'Coin value checker for US coins: pick the coin, the year and the mint mark to see the official mintage, the metal inside and its melt value at today’s price.';
+const faqs = [
+  { q: 'How do I find out what my US coin is worth?', a: 'Read three things on the coin: its denomination, the year and the small mint letter. Type them into the checker at the top of this page. It returns the number struck at that mint from the Mint tables, the metal inside and that metal at the price of the moment. A low mintage or a visible error is the signal to look closer or ask an authentication service.' },
+  { q: 'Which US coins are made of silver?', a: `Dimes, quarters and half dollars dated 1964 or earlier are 90% silver, and so are Morgan and Peace dollars. Kennedy halves dated 1965 to 1970 are 40% silver. Nickels struck from October 1942 to 1945 with a large mint mark above Monticello hold 35% silver. Every one of them is worth more as metal than its face value at ${h.silver} an ounce.` },
+  { q: 'Is it legal to melt coins for their metal?', a: `Not pennies and nickels. 31 CFR Part 82 bans melting, treating or exporting them, with fines up to ${h.money(h.CFR.fineMax)}, and exempts only the wartime silver nickels of 1942 to 1945. The rule does not cover dimes, quarters, halves or dollars, which is why old silver coins trade by weight.` },
+  { q: 'Does this site tell me what a dealer will pay?', a: 'No. It gives facts that can be checked: how many coins were struck, what they are made of and what that metal is worth at a public price. It quotes no collector price, because no free official source publishes them and a made-up figure would mislead. For a scarce coin, an authentication service and several offers are the way to a real price.' },
+  { q: 'Why does the checker say no regular coin exists for some dates?', a: `Because in some years a mint struck only commemorative half dollars, sold to collectors, and no coin for circulation. The silver tables of the Bureau of the Mint count both together, so this site subtracts the commemoratives listed in the same book. Where only a few dozen assay pieces remain, as for Denver halves of 1933, the checker says so: a regular coin with that date and mint would not be genuine.` },
+  { q: 'Are pennies still legal tender after the end of production?', a: `Yes. The Mint struck its last circulating cent on ${h.date(h.PENNY.finalStrike)}, and its own announcement states that existing pennies remain legal tender. You can still spend them, deposit them or keep them. How a shop handles cash and change is its own policy, but a cent you find in a drawer keeps its face value, and old copper ones keep their metal content too.` },
+  { q: 'Is this site connected to the US Mint?', a: 'No. It is published independently by Radif Partners. It reads the Mint’s published tables, specifications and notices, cites each one, and turns them into tools that run in your browser. It sells nothing, buys nothing, links to no dealer, and nothing you type into a tool is sent anywhere or stored.' },
+];
+const jsonLd = [websiteSchema(lang), organizationSchema(lang), webApplicationSchema({ name: 'US coin value checker', description, path: route('home', lang), lang }), faqSchema(faqs, lang)];
+const resume = `What a US coin is worth comes down to three numbers and one judgment. The numbers are on the coin or in the Mint’s records: the year, the mint that struck it, and how many pieces that mint made that year. The judgment is condition. Most coins in a jar are worth their face value, a little more as metal if they are old enough, and nothing more as collectibles, because the Mint struck them by the hundreds of millions. Dimes, quarters and halves dated 1964 or earlier are 90% silver: a dime holds ${h.oz('silverDime')} troy ounce, worth about ${h.meltOf('silverDime')} at ${h.silver} an ounce on ${h.priceDate}. Scarce issues are rare by count: the Bureau of the Mint tables show ${h.mint('dime', 1916, 'D')} dimes struck at Denver in 1916 and ${h.mint('cent', 1931, 'S')} cents at San Francisco in 1931. The checker above reads those tables for any coin from 1878 to 1980 and the Mint’s reports for later years, and gives the metal value at the price of the moment.`;
+---
+<PageLayout title={title} description={description} lang={lang} jsonLd={jsonLd} faqs={faqs} breadcrumbs={[]}>
+  <header class="mb-3">
+    <h1 class="mt-0 text-[1.75rem] font-bold text-navy-900 max-sm:leading-tight sm:text-3xl md:text-4xl">What is my US coin worth?</h1>
+    <p class="mt-2 text-base text-navy-700 sm:text-lg">Coin, year and mint mark: the number struck, the metal inside and its value at today’s price.</p>
+  </header>
+  <div data-outil class="mb-4"><Tool tool={{ kind: 'coin', props: { denom: 'quarter', year: 1964, mint: 'D' } }} primary={true} seedKey="home" /></div>
+  <Clamp text={resume} id="clamp-home" lang={lang} class="mb-3" />
+  <p class="mb-8 text-sm text-navy-600">Figures checked on <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'en-US')}</time> · {AUTHOR_NAME} · <a href={route('method', lang)} class="underline hover:text-navy-900">How mintages and melt values are worked out</a> · <a href={route('about', lang)} class="underline hover:text-navy-900">About this site</a></p>
+
+  <div class="prose prose-slate max-w-none">
+    <h2>What decides the value of a coin</h2>
+    <p>Start with the denomination and the year, because together they fix the metal. The Mint changed metals several times, each time because a metal had become worth more than the coin it was in. Silver left the dime and the quarter after 1964 under the Coinage Act of 1965 and the half dollar after 1970. The cent went from 95% copper to copper-plated zinc during 1982, and the nickel briefly held silver during the Second World War, from October 1942 to the end of 1945, when nickel was reserved for the war effort. Those dates split your change into two piles: coins worth more than face value as metal, and coins worth face value.</p>
+    <p set:html={`Then comes the mint mark, the small letter that says where the coin was struck: D for Denver, S for San Francisco, O for New Orleans, CC for Carson City, W for West Point, and either P or no letter at all for Philadelphia. The mark matters because mints worked to very different scales. The same year can give one coin struck by the hundreds of millions in Denver and its twin struck by the hundred thousand in San Francisco. The ${link('mint-marks', 'mint marks guide')} shows where the letter sits on each coin and which years carry none at all.`} />
+    <Fragment set:html={h.table(['Coin', 'Silver until', 'Metal value today'], [
+      ['Dime', '1964 (90%)', `${h.meltOf('silverDime')} silver, ${h.meltOf('cladDime')} clad`],
+      ['Quarter', '1964 (90%)', `${h.meltOf('silverQuarter')} silver, ${h.meltOf('cladQuarter')} clad`],
+      ['Half dollar', '1964 (90%), 1965 to 1970 (40%)', `${h.meltOf('silverHalf')}, ${h.meltOf('silverCladHalf')}, ${h.meltOf('cladHalf')}`],
+      ['Dollar', '1935 (90%)', `${h.meltOf('silverDollar')} silver`],
+      ['Nickel', '1942 to 1945 (35%)', `${h.meltOf('warNickel')} wartime, ${h.meltOf('nickel')} regular`],
+      ['Cent', 'never silver', `${h.meltOf('bronzeCent')} bronze, ${h.meltOf('zincCent')} zinc`],
+    ], `Weights and metals from the ${h.src('mintBook', 'Bureau of the Mint, 1981')} and the ${h.src('mintSpecs', 'US Mint specifications')}; after silver, dimes, quarters and halves became copper-nickel clad, and cents turned from bronze to copper-plated zinc in 1982; silver ${h.silver} per ounce and copper ${h.copper} per pound read on ${h.priceDate}.`, ['l', 'l', 'r'])} />
+    <p>Last comes the number struck at that mint, and here the official tables do the work. The Bureau of the Mint published in 1981 the count of every coin made at every mint, year by year, from 1793 to 1980. This site transcribed the tables for the coins people still find, checked each column against the printed totals, and joined the Mint’s production reports for the State quarters of 1999 to 2008 and for the years 2010 to 2012 and 2016 to 2023. That is the figure the checker shows in the line “Struck at this mint”.</p>
+
+    <h2>Melt value: what the metal is worth</h2>
+    <p>Melt value is the market value of the metal a coin contains, here worked out from the coin’s official weight and alloy and a public price. A 90% silver quarter weighs {h.grams('silverQuarter')} grams and holds {h.oz('silverQuarter')} troy ounce of pure silver. At {h.silver} an ounce that is about {h.meltOf('silverQuarter')}, many times its face value. The same arithmetic on a modern clad quarter gives {h.meltOf('cladQuarter')} of copper and nickel. The calculator below takes any kind of coin and any quantity, with the silver and copper prices of the moment; you can type your own price instead.</p>
+  </div>
+  <div class="mb-6"><Tool tool={{ kind: 'melt', props: { type: 'silverQuarter', qty: 10 } }} idPrefix="h1" /></div>
+  <div class="prose prose-slate max-w-none">
+    <p set:html={`Two limits apply. First, a melt value is not an offer: someone buying coins for their metal has costs, and the price you are offered can differ from the result. Second, pennies and nickels cannot legally be melted: the ${h.src('cfr82', 'coin regulations at 31 CFR Part 82')} ban melting, treating or exporting them, with an exception for the wartime silver nickels. For bags and rolls of pre-1965 silver, the ${link('junk-silver-value', 'junk silver page')} converts a face value straight into ounces: every dollar of face value in 90% dimes, quarters or halves holds ${h.ozPerDollar} troy ounce of silver. The full ${link('melt-value-calculator', 'melt value calculator')} has a page of its own.`} />
+
+    <h2>Is it silver? The years to remember</h2>
+    <p>The silver years are easy to check without a scale. Look at the edge of a dime, quarter or half: a copper stripe between two grey layers means clad, a solid silver-grey edge means silver. Then confirm with the date. Dimes and quarters dated 1964 or earlier are 90% silver. Halves are 90% silver to 1964 and 40% silver from 1965 to 1970. Dollars were 90% silver through 1935; after that, the circulating dollars contain no silver, and only some Eisenhower dollars sold to collectors were made with 40% silver. Nickels hold silver only in the war years, recognisable by the large mint mark above Monticello’s dome.</p>
+  </div>
+  <div class="mb-6"><Tool tool={{ kind: 'mini:silveryear' }} idPrefix="h2" /></div>
+  <div class="prose prose-slate max-w-none">
+    <p set:html={`The ${link('silver-coin-years', 'silver coin years page')} lists every case, including the 1976 Bicentennial quarters, halves and dollars struck in 40% silver for collector sets. Each denomination also has its own page: ${link('silver-dime-value', 'silver dimes')}, ${link('silver-quarter-value', 'silver quarters')}, ${link('kennedy-half-dollar-value', 'Kennedy halves')}, ${link('morgan-silver-dollar-value', 'Morgan dollars')} and ${link('peace-dollar-value', 'Peace dollars')}.`} />
+
+    <h2>Rarity: what the mintage tells you, and what it does not</h2>
+    <p>A coin is scarce first because few were made. The checker places each figure in a band, from very low (under one million) to very high (over 200 million). Those bands are a reading aid set by this site, not a grading of value. They point you to the coins worth a closer look: among Lincoln cents, the lowest figures in the Mint tables are {h.lowestList('cent', 1909, 1958, 4)}; among dimes since 1916, {h.lowestList('dime', 1916, 1964, 3)}.</p>
+  </div>
+  <div class="mb-6"><Tool tool={{ kind: 'mini:rarecent' }} idPrefix="h3" /></div>
+  <div class="prose prose-slate max-w-none">
+    <p set:html={`A low mintage is not the whole story. Some coins were struck in large numbers and later melted, so few survive. Others had small mintages but were saved by collectors from the start. Condition multiplies everything: a scarce date that has been cleaned or worn smooth may be worth little more than its metal, while a common date in perfect condition can be worth a premium. This is why the site gives facts you can verify, mintage, metal and melt value, and leaves out prices it cannot source. The ${link('rare-pennies-worth-money', 'rare pennies')} and ${link('rare-quarters-worth-money', 'rare quarters')} pages rank the lowest figures and explain the traps, including the calendar-year counting that mixes two designs in a changeover year.`} />
+    <p set:html={`Mistakes made at the Mint are the other way a coin becomes valuable. Doubled dies, coins struck on the wrong metal and missing mint marks are listed in the ${link('error-coins', 'error coins guide')}, each with what to look for and the size of the issue it hides in. The Mint does not count varieties separately, so the figure shown is that of the whole issue: a doubled die from a year of hundreds of millions is still rare, because only one die was affected.`} />
+
+    <h2>The end of the penny</h2>
+    <p set:html={`On ${h.date(h.PENNY.finalStrike)}, the Mint struck its final circulating one-cent coin at Philadelphia, ending a ${h.PENNY.years}-year run. The ${h.src('pennyRelease', 'Mint’s announcement')} gives the reason in numbers: each penny had come to cost ${h.num(h.PENNY.costTo, 2)} cents to make, against ${h.num(h.PENNY.costFrom, 2)} cents a decade earlier. The Secretary of the Treasury used the authority of 31 U.S.C. 5111 and 5112 to stop production once it was no longer needed, and the Mint expects to save about ${h.money(h.PENNY.savingsMillionsPerYear)} million a year. Pennies stay legal tender: about ${h.PENNY.inCirculationBillions} billion are still out there, shops can keep their one-cent prices, and collector pennies are still made.`} />
+  </div>
+  <div class="mb-6"><Tool tool={{ kind: 'mini:pennycost' }} idPrefix="h4" /></div>
+  <div class="prose prose-slate max-w-none">
+    <p set:html={`The end of production does not make ordinary pennies rare: billions remain and no new ones are needed. It does make the old copper cents, dated 1981 or earlier, a curiosity, since their metal is worth more than a cent. The ${link('penny-discontinued', 'penny end page')} explains what changes for shoppers and the ${link('should-i-save-pennies', 'saving pennies page')} weighs whether a jar of cents is worth sorting.`} />
+
+    <h2>Condition: the part only you can judge</h2>
+    <p set:html={`Two coins with the same date, mint and mintage can be worth very different amounts because of wear. US grading services rate coins on a scale from 1 to 70, where 60 and above means no wear from circulation. You do not need a grade to use this site, but a few habits protect value: hold coins by the edge, never clean or polish them, and keep them in a soft holder rather than loose in a jar. The ${link('coin-grading', 'grading guide')} turns those rules into a short quiz, with a calculator that compares a grading fee to what grading could add.`} />
+
+    <h2>Every page of the site</h2>
+  </div>
+  <div class="not-prose grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-sommaire>
+    {GROUPS_ORDER.map((g) => (
+      <section><h3 class="mb-2 text-lg font-semibold text-navy-900">{groupLabel(g)}</h3><ul class="space-y-2 text-sm">{cards(g).map((c) => <li><a href={c.href} class="font-medium text-accent-700 underline">{c.name}</a><span class="block text-navy-700">{c.text}</span></li>)}</ul></section>
+    ))}
+  </div>
+  <div class="prose prose-slate mt-8 max-w-none">
+    <h2>Why our data changes the answer</h2>
+    <p set:html={`A value with no source cannot be checked, so this site starts from the numbers the Mint itself published. The mintages come from the ${h.src('mintBook', 'Bureau of the Mint’s 1981 tables')}, transcribed by hand, column by column, and checked against the printed totals and face-value tables; the State quarters and recent years come from the ${h.src('modernProduction', 'Mint’s production reports')}. The weights and alloys come from the same book, the ${h.src('mintReport1982', 'Mint’s annual reports')} and the ${h.src('mintSpecs', 'current specifications')}. The metal prices come from public sources: a live silver and copper price from gold-api.com, and the World Bank’s monthly averages for nickel and zinc, last read for ${h.wbMonth}.`} />
+    <p>Because every figure has a source, every figure can be checked, and the checker shows the caveats that come with it: a year when two designs were struck, coins dated one year but struck the next, San Francisco figures that include proofs, years without mint marks. A bare price list cannot tell you any of that.</p>
+
+    <h2>How this site works</h2>
+    <p>The tools run in your browser. Nothing you type, not a year, not a quantity, is sent or stored; the only request your browser makes is for the silver and copper prices of the moment, and that request carries nothing about you. The site takes no payment, buys and sells no coins and links to no dealer. The <a href={route('method', lang)}>method page</a> explains how each number is computed, and the sources below are those the figures were read on, on {h.date(h.P.retrieved_at)}.</p>
+    <Sources lang={lang} keys={['mintBook', 'mintReport1982', 'mintSpecs', 'pennyRelease', 'pennyFaq', 'mintMarks', 'modernProduction', 'stateQuarters', 'cfr82', 'worldBank', 'goldApi']} />
+  </div>
+</PageLayout>

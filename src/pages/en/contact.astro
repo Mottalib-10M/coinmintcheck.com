@@ -1,0 +1,23 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import LegalIdentity from '../../components/LegalIdentity.astro';
+import { CONTACT_EMAIL, LAST_UPDATED, SITE_NAMES } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+---
+<PageLayout title={`Contact ${SITE_NAMES[lang]}: a figure, a source, the widget`} description="Write to US Coin Values when a mintage, a weight or a date looks wrong, when a page seems out of date, or to embed the coin checker or melt calculator on your own site." lang={lang} noindex={true} breadcrumbs={[{ label: 'Contact' }]} showAuthor={false}>
+  <div class="prose prose-slate max-w-none">
+    <h1>Contact</h1>
+    <p>Email: <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>. A person reads every message.</p>
+    <h2>A figure looks wrong</h2>
+    <p>Tell us the coin, the figure and, if you have it, the official table or page that says otherwise. We read the source again, correct the data file and date the change.</p>
+    <h2>What we cannot do</h2>
+    <p>We are not a dealer, an appraiser or a grading service. We cannot value, authenticate or buy your coin, and we cannot recommend a buyer. Please do not send photographs of coins or personal details.</p>
+    <h2>Using a tool on your own site</h2>
+    <p>Libraries, schools, clubs and blogs can show the coin checker or the melt calculator in an iframe at no cost: see the <a href={route('widget', lang)}>embed page</a>.</p>
+    <h2>Publisher</h2>
+    <LegalIdentity lang={lang} />
+    <p>Updated on <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'en-US')}</time>.</p>
+  </div>
+</PageLayout>

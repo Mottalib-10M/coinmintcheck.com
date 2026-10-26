@@ -1,0 +1,304 @@
+{
+ "_lisezmoi": "Every specification, date and price reference of the site lives here, never typed in a page (RECETTE §4). Each value was read on the source named in `sources` on `retrieved_at`. Mintages are in mintages.json, built by scripts/build-mintages.py from data/mint-tables/.",
+ "year": 2026,
+ "retrieved_at": "2026-10-26",
+ "valid_from": "2026-01-01",
+ "valid_to": "2026-12-31",
+ "troyOunceGrams": 31.1034768,
+ "poundGrams": 453.59237,
+ "tonneGrams": 1000000,
+ "metals": {
+  "_note": "World Bank Pink Sheet, monthly averages in US dollars, file updated on 2 October 2026. $/mt for base metals, $/troy oz for silver. The pages show the live price from gold-api.com when the browser can reach it, else these.",
+  "month": "2026-09",
+  "updated": "2026-10-02",
+  "silverUsdOz": 64.6,
+  "copperUsdMt": 14474,
+  "nickelUsdMt": 16324,
+  "zincUsdMt": 4021,
+  "history": [
+   {
+    "month": "2026-06",
+    "silverUsdOz": 66.7,
+    "copperUsdMt": 13552,
+    "nickelUsdMt": 17588,
+    "zincUsdMt": 3539
+   },
+   {
+    "month": "2026-07",
+    "silverUsdOz": 58.8,
+    "copperUsdMt": 13543,
+    "nickelUsdMt": 16651,
+    "zincUsdMt": 3599
+   },
+   {
+    "month": "2026-08",
+    "silverUsdOz": 65.4,
+    "copperUsdMt": 14326,
+    "nickelUsdMt": 16751,
+    "zincUsdMt": 3875
+   },
+   {
+    "month": "2026-09",
+    "silverUsdOz": 64.6,
+    "copperUsdMt": 14474,
+    "nickelUsdMt": 16324,
+    "zincUsdMt": 4021
+   }
+  ]
+ },
+ "alloys": {
+  "_note": "Weight in grams and metal shares. Bronze, steel, war nickel, 90% silver and 40% silver-clad: Bureau of the Mint 1981 book (Table VI and specification tables). Zinc cent and the 1982 change: Mint annual report FY1982. Clad coins, nickel and golden dollar: US Mint coin specifications page. Tin in older bronze and manganese are not priced: their share counts as zinc or as nothing, which the method page states.",
+  "bronzeCent": {
+   "label": "Bronze cent (95% copper)",
+   "grams": 3.11,
+   "cu": 0.95,
+   "zn": 0.05
+  },
+  "steelCent": {
+   "label": "Zinc-coated steel cent (1943)",
+   "grams": 2.7,
+   "steel": 1
+  },
+  "zincCent": {
+   "label": "Copper-plated zinc cent",
+   "grams": 2.5,
+   "cu": 0.025,
+   "zn": 0.975
+  },
+  "nickel": {
+   "label": "Cupronickel five-cent piece",
+   "grams": 5.0,
+   "cu": 0.75,
+   "ni": 0.25
+  },
+  "warNickel": {
+   "label": "Wartime nickel (35% silver)",
+   "grams": 5.0,
+   "cu": 0.56,
+   "ag": 0.35,
+   "mn": 0.09
+  },
+  "silverDime": {
+   "label": "90% silver dime",
+   "grams": 2.5,
+   "ag": 0.9,
+   "cu": 0.1
+  },
+  "silverQuarter": {
+   "label": "90% silver quarter",
+   "grams": 6.25,
+   "ag": 0.9,
+   "cu": 0.1
+  },
+  "silverHalf": {
+   "label": "90% silver half dollar",
+   "grams": 12.5,
+   "ag": 0.9,
+   "cu": 0.1
+  },
+  "silverDollar": {
+   "label": "90% silver dollar",
+   "grams": 26.73,
+   "ag": 0.9,
+   "cu": 0.1
+  },
+  "silverCladHalf": {
+   "label": "40% silver-clad half dollar",
+   "grams": 11.5,
+   "ag": 0.4,
+   "cu": 0.6
+  },
+  "silverCladQuarter": {
+   "label": "40% silver-clad quarter (collector sets)",
+   "grams": 5.75,
+   "ag": 0.4,
+   "cu": 0.6
+  },
+  "silverCladDollar": {
+   "label": "40% silver-clad dollar (collector coins)",
+   "grams": 24.592,
+   "ag": 0.4,
+   "cu": 0.6
+  },
+  "cladDime": {
+   "label": "Copper-nickel clad dime",
+   "grams": 2.268,
+   "cu": 0.9167,
+   "ni": 0.0833
+  },
+  "cladQuarter": {
+   "label": "Copper-nickel clad quarter",
+   "grams": 5.67,
+   "cu": 0.9167,
+   "ni": 0.0833
+  },
+  "cladHalf": {
+   "label": "Copper-nickel clad half dollar",
+   "grams": 11.34,
+   "cu": 0.9167,
+   "ni": 0.0833
+  },
+  "cladDollar": {
+   "label": "Copper-nickel clad dollar (Eisenhower)",
+   "grams": 22.68,
+   "cu": 0.9167,
+   "ni": 0.0833
+  },
+  "sbaDollar": {
+   "label": "Copper-nickel clad small dollar (Anthony)",
+   "grams": 8.1,
+   "cu": 0.9167,
+   "ni": 0.0833
+  },
+  "goldenDollar": {
+   "label": "Manganese-brass golden dollar",
+   "grams": 8.1,
+   "cu": 0.885,
+   "zn": 0.06,
+   "mn": 0.035,
+   "ni": 0.02
+  }
+ },
+ "penny": {
+  "finalStrike": "2025-11-12",
+  "years": 232,
+  "costFrom": 1.42,
+  "costTo": 3.69,
+  "inCirculationBillions": 300,
+  "savingsMillionsPerYear": 56,
+  "fy2024Billions": 3.2,
+  "fy2024SharePct": 57,
+  "fy2024AllCoinsBillions": 5.61,
+  "lifespanYears": 30,
+  "cpzFiscalYear": 1982,
+  "cpzComplete": 1983,
+  "fy1983CentsBillions": 14.6,
+  "fy1983CpzBillions": 12.7
+ },
+ "marks": {
+  "warNickelFrom": "1942-10-01",
+  "warNickelTo": "1945-12-31",
+  "noMarkFrom": 1965,
+  "noMarkTo": 1967,
+  "obverseFrom": 1968,
+  "pAllButCentFrom": 1980,
+  "pCent": 2017,
+  "wQuarters": 2019,
+  "wQuartersMillions": 10,
+  "ccFrom": 1870,
+  "ccTo": 1893,
+  "sClosedAfter": 1955
+ },
+ "sources": {
+  "mintBook": {
+   "url": "https://archive.org/details/domesticforeignc00unit80",
+   "label": {
+    "en": "Bureau of the Mint: Domestic and Foreign Coins Manufactured by Mints of the United States 1793-1980 (Department of the Treasury, 1981), scanned copy on the Internet Archive"
+   }
+  },
+  "mintReport1982": {
+   "url": "https://archive.org/details/annualreportofdi1982unit",
+   "label": {
+    "en": "Annual Report of the Director of the United States Mint, fiscal year 1982 (copper-plated zinc cent), scanned copy on the Internet Archive"
+   }
+  },
+  "mintReport1983": {
+   "url": "https://archive.org/details/annualreportofdi1983unit",
+   "label": {
+    "en": "Annual Report of the Director of the Mint, fiscal year 1983 (end of the bronze cent), scanned copy on the Internet Archive"
+   }
+  },
+  "mintSpecs": {
+   "url": "https://www.usmint.gov/learn/coins-and-medals/circulating-coins/coin-specifications",
+   "label": {
+    "en": "US Mint: Coin Specifications (weights, diameters and composition of current coins), read on 26 October 2026 through the archived copy of 27 September 2026"
+   }
+  },
+  "pennyRelease": {
+   "url": "https://www.usmint.gov/news/press-releases/united-states-mint-hosts-historic-ceremonial-strike-for-final-production-of-the-circulating-one-cent-coin",
+   "label": {
+    "en": "US Mint press release of 12 November 2025: ceremonial strike for the final production of the circulating one-cent coin"
+   }
+  },
+  "pennyFaq": {
+   "url": "https://www.usmint.gov/news/media-kit/penny",
+   "label": {
+    "en": "US Mint: Penny FAQs (suspension of penny production, legal tender, melting ban, designs), content updated 7 January 2026"
+   }
+  },
+  "mintMarks": {
+   "url": "https://www.usmint.gov/learn/collecting-basics/mint-marks",
+   "label": {
+    "en": "US Mint: Mint Marks (facilities, letters and where they appear on each coin)"
+   }
+  },
+  "mintHistory": {
+   "url": "https://www.usmint.gov/learn/history/us-circulating-coins",
+   "label": {
+    "en": "US Mint: History of U.S. Circulating Coins (designs, portraits and metals)"
+   }
+  },
+  "anatomy": {
+   "url": "https://www.usmint.gov/learn/collecting-basics/anatomy-of-a-coin",
+   "label": {
+    "en": "US Mint: Anatomy of a Coin (obverse, reverse, mint mark, 1943 steel and copper cents)"
+   }
+  },
+  "stateQuarters": {
+   "url": "https://web.archive.org/web/20130517222401/https://www.usmint.gov/about_the_mint/index.cfm?action=coin_production&sqYear=1999",
+   "label": {
+    "en": "US Mint: 50 State Quarters production by state and mint, 1999 to 2008 (archived copies of the Mint's production pages, captured 17 May 2013)"
+   }
+  },
+  "modernProduction": {
+   "url": "https://www.usmint.gov/about/production-sales-figures/circulating-coins-production",
+   "label": {
+    "en": "US Mint: Circulating Coins Production (yearly figures per mint; years 2010 to 2012 and 2016 to 2023 read on archived copies captured between 2013 and 2024)"
+   }
+  },
+  "cfr82": {
+   "url": "https://www.govinfo.gov/app/details/CFR-2025-title31-vol1/CFR-2025-title31-vol1-part82",
+   "label": {
+    "en": "31 CFR Part 82 (edition of 1 July 2025): 5-cent and one-cent coin regulations, ban on exporting, melting or treating, exceptions and penalties"
+   }
+  },
+  "usc5112": {
+   "url": "https://www.govinfo.gov/app/details/USCODE-2023-title31/USCODE-2023-title31-subtitleIV-chap51-subchapII-sec5112",
+   "label": {
+    "en": "31 U.S.C. 5112: denominations, specifications and design of coins (United States Code, 2023 edition)"
+   }
+  },
+  "gao19300": {
+   "url": "https://www.gao.gov/assets/gao-19-300.pdf",
+   "label": {
+    "en": "GAO-19-300: Coins and currency report (coin lifespan of about 30 years, page 6)"
+   }
+  },
+  "worldBank": {
+   "url": "https://www.worldbank.org/en/research/commodity-markets",
+   "label": {
+    "en": "World Bank: Commodity Price Data (The Pink Sheet), monthly prices, file updated on 2 October 2026"
+   }
+  },
+  "worldBankLicence": {
+   "url": "https://datacatalog.worldbank.org/search/dataset/0038238/commodity-prices-history-and-projections",
+   "label": {
+    "en": "World Bank Data Catalog: commodity price data, Creative Commons Attribution 4.0 licence"
+   }
+  },
+  "goldApi": {
+   "url": "https://gold-api.com/terms",
+   "label": {
+    "en": "gold-api.com: terms of service (commercial use permitted, section 9), live silver and copper prices"
+   }
+  }
+ },
+ "cfr82": {
+  "exportFaceMax": 100,
+  "travelerFaceMax": 5,
+  "travelerHobbyFaceMax": 25,
+  "fineMax": 10000,
+  "prisonYearsMax": 5,
+  "warNickelExempt": true
+ }
+}

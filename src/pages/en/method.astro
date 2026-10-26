@@ -1,0 +1,48 @@
+---
+import PageLayout from '../../layouts/PageLayout.astro';
+import { LAST_UPDATED } from '../../data/site-config';
+import { route } from '../../i18n/routes';
+import { breadcrumbSchema, articleSchema } from '../../lib/seo';
+import { helpers } from '../../lib/helpers';
+import { displayDate } from '../../lib/format';
+const lang = 'en';
+const h = helpers(lang);
+const s = (k: Parameters<typeof h.src>[0], t: string) => h.src(k, t);
+const A = h.alloy;
+---
+<PageLayout title="Method of US Coin Values: mintages, metals and melt values" description="How US Coin Values reads the Mint tables, which weights and alloys it uses, where metal prices come from and how the melt value of a coin is computed." lang={lang} jsonLd={[articleSchema({ title: 'How mintages, metals and melt values are worked out', description: 'Method of US Coin Values', path: route('method', lang), lang }), breadcrumbSchema([{ name: 'Home', path: route('home', lang) }, { name: 'Method', path: route('method', lang) }])]} breadcrumbs={[{ label: 'Method' }]}>
+  <header class="mb-6"><p class="kicker">Method</p><h1 class="mt-0 text-3xl font-bold text-navy-900 md:text-4xl">How mintages, metals and melt values are worked out</h1></header>
+  <div class="prose prose-slate max-w-none">
+    <p>Every page and every tool reads two data files: one of weights, alloys, dates and prices, read on the sources below on {h.date(h.P.retrieved_at)}, and one of mintages, built by a script from our transcription of the Mint’s tables. No figure is typed into a page; when a source changes, the file changes and every page follows. Automated tests check the engine against figures read by hand in the tables.</p>
+    <h2>1. Mintages</h2>
+    <p>For 1878 to 1980 the figures come from <Fragment set:html={s('mintBook', 'Domestic and Foreign Coins Manufactured by Mints of the United States 1793-1980')} />, published by the Department of the Treasury, Bureau of the Mint, in 1981, a US government work read on the scanned copy held by the Internet Archive. We transcribed, by hand from the page images, the tables of silver, minor and composite coinage of Philadelphia, Denver, San Francisco, New Orleans and Carson City, and checked every column against the printed totals or, for Philadelphia silver, against the face-value table year by year. Two transcription slips found that way were corrected before publication.</p>
+    <ul>
+      <li>The tables count pieces made in each <strong>calendar year</strong>. For most years that is also the date on the coin. Where it is not, the tool says so: 1909 cents (Indian Head and Lincoln together), 1913 and 1938 nickels, 1916 dimes, quarters and halves, and 1921 Philadelphia dollars mix two designs; coins dated 1964 were struck until April 1966 and coins dated 1974 until September 1975.</li>
+      <li>For 1964, 1965, 1966, 1974 and the 1776-1976 Bicentennial coins, the book gives separate tables of coins <strong>bearing the date</strong>; the tool uses those.</li>
+      <li>The silver tables count commemorative coins with the regular ones. We transcribed the book’s table of annual commemorative coinage (silver issues of 1892 to 1954) and subtract it, so a figure means the coins made for circulation. That table leaves out the coins reserved for assay, so where only commemoratives were struck a few dozen pieces remain: the tool then says that no regular coin of that date and mint exists.</li>
+      <li>San Francisco figures from 1965 include proof coins made for collector sets; the rankings of lowest mintages leave those years out.</li>
+      <li>State quarters 1999 to 2008 come from the <Fragment set:html={s('stateQuarters', 'Mint’s production pages per state')} />, read on archived copies captured on May 17, 2013. Yearly figures per mint for 2010 to 2012 and 2016 to 2023 come from the <Fragment set:html={s('modernProduction', 'Mint’s circulating coin production reports')} />, read on archived copies captured between 2013 and 2024; the Mint publishes them in millions, so they are shown as rounded. Other years after 1980 have no figure here, and the tool says so instead of guessing.</li>
+    </ul>
+    <h2>2. Weights and alloys</h2>
+    <p>Bronze cent {h.grams('bronzeCent')} g at 95% copper; steel cent of 1943 {h.grams('steelCent')} g; wartime nickel {h.grams('warNickel')} g at 56% copper, 35% silver and 9% manganese, struck from October 1, 1942 to December 31, 1945; 90% silver dime {h.grams('silverDime')} g, quarter {h.grams('silverQuarter')} g, half {h.grams('silverHalf')} g, dollar {h.grams('silverDollar')} g; 40% silver-clad half {h.grams('silverCladHalf')} g: all from the 1981 book. The copper-plated zinc cent of {h.grams('zincCent')} g and its phase-in during fiscal 1982 come from the <Fragment set:html={s('mintReport1982', 'Mint’s annual report for fiscal 1982')} />. Clad dime {h.grams('cladDime')} g, quarter {h.grams('cladQuarter')} g, half {h.grams('cladHalf')} g at 91.67% copper and 8.33% nickel, nickel {h.grams('nickel')} g at 75% copper and 25% nickel, golden dollar {h.grams('goldenDollar')} g: from the <Fragment set:html={s('mintSpecs', 'Mint’s coin specifications')} />.</p>
+    <h2>3. Metal prices</h2>
+    <ul>
+      <li>Silver and copper: the price of the moment from <Fragment set:html={s('goldApi', 'gold-api.com')} />, requested by your browser when a tool opens; at build time the same source gives a first price, shown with its date if the live request fails. On {h.priceDate} it gave {h.silver} per troy ounce of silver and {h.copper} per pound of copper.</li>
+      <li>Nickel and zinc: the monthly average of the <Fragment set:html={s('worldBank', 'World Bank Pink Sheet')} />, in dollars per metric ton, converted at 2,204.62 pounds per ton; last month read: {h.wbMonth}. The same file gives monthly silver and copper averages, kept as a reference.</li>
+      <li>Manganese, tin and steel are not priced: their share counts for nothing, which understates a few coins by a fraction of a cent.</li>
+    </ul>
+    <h2>4. Melt value</h2>
+    <p>Melt value = weight × share of each metal × price of that metal. Silver is priced per troy ounce of 31.1034768 grams, base metals per pound of 453.59237 grams. A 90% silver coin holds {h.ozPerDollar} troy ounce of silver per dollar of face value, whatever the denomination, because the Mint struck dimes, quarters and halves in proportion to their face value. A melt value is the value of the metal, not an offer to buy, and 31 CFR Part 82 forbids melting cents and nickels except the wartime silver nickels.</p>
+    <h2>5. Mintage bands</h2>
+    <p>The checker places each figure in a band: very low under 1 million, low from 1 to 5 million, moderate from 5 to 20 million, high from 20 to 200 million, very high above. These thresholds are a reading aid chosen by this site. They do not measure survival or condition, which decide what a collector pays.</p>
+    <h2>6. What the site does not do</h2>
+    <ul>
+      <li>It gives no collector or dealer price: no free official source publishes them, and an invented figure would mislead.</li>
+      <li>It does not authenticate or grade coins, and its descriptions of varieties are pointers to what to check, not certificates.</li>
+      <li>It does not keep anything you type: the tools run in your browser.</li>
+    </ul>
+    <h2>7. Updates</h2>
+    <p>A script (scripts/update-data.py) re-reads the World Bank file every month through a scheduled workflow and stops with an error when the monthly figures differ from the parameter file, until a person has read the change. Mintages after 1980 are added by hand when a new official figure is read.</p>
+    <p>Method version of <time datetime={LAST_UPDATED}>{displayDate(LAST_UPDATED, 'en-US')}</time>. A figure that looks wrong: <a href={route('contact', lang)}>contact</a>.</p>
+  </div>
+</PageLayout>
