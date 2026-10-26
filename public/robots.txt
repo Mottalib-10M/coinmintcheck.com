@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /*?*
 
-Sitemap: https://us-coin-values.example/sitemap-index.xml
+Sitemap: https://coinmintcheck.com/sitemap-index.xml

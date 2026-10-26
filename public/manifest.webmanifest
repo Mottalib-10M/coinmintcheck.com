@@ -1,6 +1,6 @@
 {
- "name": "US Coin Values",
- "short_name": "US Coin Values",
+ "name": "Coin Mint Check",
+ "short_name": "Coin Mint Check",
  "description": "What is your US coin worth? Year and mint mark give the official mintage, the metal inside and its melt value at today's price, with the penny end and error coins explained.",
  "start_url": "/en/",
  "display": "standalone",

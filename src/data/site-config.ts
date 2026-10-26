@@ -1,8 +1,8 @@
 /** Configuration centrale du site (générée par new-site.py). */
-export const SITE_URL = "https://us-coin-values.example";
-export const SITE_NAMES: Record<string, string> = {"en": "US Coin Values"};
+export const SITE_URL = "https://coinmintcheck.com";
+export const SITE_NAMES: Record<string, string> = {"en": "Coin Mint Check"};
 // Partie du nom affichée en couleur dans l'en-tête (RECETTE §10.3), « » pour aucune.
-export const BRAND_ACCENT = "";
+export const BRAND_ACCENT = "Mint";
 export const LANG_TAGS: Record<string, string> = {"en": "en-US"};
 export const OG_LOCALES: Record<string, string> = {"en": "en_US"};
 export const LOCALE_TAG = 'en-US';
@@ -18,7 +18,7 @@ export const AUTHOR_DESC: Record<string, string> = {"en": "Radif Partners reads 
  *  themes reellement traites par le site, pas une liste de mots-cles : un sujet
  *  declare ici sans page qui le couvre est une declaration fausse. */
 export const KNOWS_ABOUT: Record<string, string[]> = {"en": ["US Mint circulating coin mintages", "Melt value of silver, copper and nickel coins", "Lincoln cents and the end of penny production in 2025", "Mint marks of Philadelphia, Denver, San Francisco, Carson City and New Orleans", "Coin grading basics", "Known US coin error varieties"]};
-export const CONTACT_EMAIL = "contact@us-coin-values.example";
+export const CONTACT_EMAIL = "contact@coinmintcheck.com";
 export const THEME_COLOR = '#0A3161';
 export const LOGO_SYMBOL = '¢';
 export const BING_VERIFY_CODE = '';
